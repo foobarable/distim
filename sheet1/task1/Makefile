@@ -1,41 +1,37 @@
-GNUPLOT = $(addsuffix .pdf, $(basename $(wildcard *.plot)))
-INKSCAPE = $(addsuffix .pdf, $(basename $(wildcard *.svg)))
 DIRS= `find -maxdepth 1  -type d ! -wholename \*.svn\* | grep /`
 PDF = $(addsuffix .pdf, $(basename $(wildcard *.eps)))
-FILE = "All_Tasks"
-
 
 show: all
-	evince ./$(FILE).pdf & 2> /dev/null
 
-all: $(PDF) $(GNUPLOT) $(INKSCAPE)  
-	pdflatex --halt-on-error ./$(FILE).tex
+all: $(PDF) $(GNUPLOT) $(INKSCAPE) 
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	mv ./tmp/document.pdf .
 
-All_Tasks.aux:
-	pdflatex --halt-on-error ./$(FILE).tex
+evince:
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	mv ./tmp/document.pdf .
+	evince document.pdf &> /dev/null
 
+okular:
+	epstopdf ./pictures/*.eps
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	bibtex ./tmp/document
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	pdflatex --halt-on-error --output-directory=./tmp ./document.tex
+	mv ./tmp/document.pdf .
+	okular ./document.pdf 2> /dev/null
 
-%.pdf: %.plot *.dat $(FILE).bbl
-	gnuplot $(basename $@).plot 2> $(basename $@).log
-	touch $(basename $@).pdf
-	epstopdf $(basename $@).eps
-
-%.pdf: %.svg
-	inkscape $(basename $@).svg --export-eps=$(basename $@).eps
-	epstopdf $(basename $@).eps
+prepare:
+	mkdir tmp
 
 %.pdf: %.eps
 	epstopdf $(basename $@).eps
 
-
-.PHONY: clean
 clean:
-	-rm -f *~ *.bak *.aux *.log *.toc *.out *.nav *.snm
+	-rm -f ./tmp/*~ ./tmp/*.bak ./tmp/*.aux ./tmp/*.log ./tmp/*.toc ./tmp/*.out ./tmp/*.nav ./tmp/*.snm ./tmp/*.bbl ./tmp/*.blg
+	-rm -f ./tmp/*.pdf
+	-rm -f *.pdf
 
-replot:
-	for i in `find -type f ! -wholename \*.svn\* | grep .dat`; do touch $$i; echo $$i getoucht.; done
-#	for i in `find -type f ! -wholename \*.svn\* | grep .plot`; do touch $$i; echo $$i getoucht.; done
-	make all
-
-.PHONY: all-evince
 all-evince: show
