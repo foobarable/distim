@@ -2,7 +2,7 @@ GNUPLOT = $(addsuffix .pdf, $(basename $(wildcard *.plot)))
 INKSCAPE = $(addsuffix .pdf, $(basename $(wildcard *.svg)))
 DIRS= `find -maxdepth 1  -type d ! -wholename \*.svn\* | grep /`
 PDF = $(addsuffix .pdf, $(basename $(wildcard *.eps)))
-FILE = "All_Tasks"
+FILE = "document"
 
 
 show: all
