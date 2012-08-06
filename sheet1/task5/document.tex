@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{
+	numbers=left,
+	basicstyle=\small,
+	tabsize=3,
+	showspaces=false,
+	showtabs=false,
+	showstringspaces=false
+}
+
+\begin{document}
+\title{Aufgaben 1.5}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+\titlepage
+\section{(a)}
+The disk service time is defined as the sum of the seek time, the rotational latency and the data transfer time. \\
+\begin{equation}
+\textbf{Disk service time} = \textbf{seek time} + \textbf{rotational latency} + \textbf{data transfer time}
+\end{equation}
+The summands of this equation will be explained in detail now.
+\subsection{Seek time}
+Refering to the lecture slides, the seek time is the time to position the read/write head and is specified by the manufacturer.
+\subsection{Rotational latency}
+According to the lecture slides, the rotational latency is the time taken by the plater to rotate and position the data under the read/write head and is dependent on the rotation speed of the spindle. The formula to calculate the rotational latency for a given rotation speed $X$ is \\
+\begin{equation}
+\textbf{Rotational latency} = \frac{0.5}{\frac{X}{60}}
+\end{equation}
+\subsection{Data transfer time}
+The lecture slides define the data transfer time/rate as the average amount of data per unit time that the drive can deliver to the Host bus adaptor. This value is, like the seek time,  also specified by the manufacturer.
+
+\section{(b)}
+
+
+
+\end{document}
