@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{listings}
+
+
+\lstset{
+	numbers=left,
+	basicstyle=\small,
+	tabsize=3,
+	showspaces=false,
+	showtabs=false,
+	showstringspaces=false
+}
+
+\begin{document}
+\title{Aufgabe 1.1}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+\section{(a)}
+Logical Block Addressing is agnostic. Why? By design.
+
+Agnostic means: The using entity does not even (have to) know the exact type of the underlying storage device. It works as long as it is a block device.
+
+This is useful for the following reasons:
+\begin{itemize}
+\item Upper layers do not need to care about the individual design of the specific drive, e.~g., regarding cylinders, heads, and sectors (\emph{less effort}).
+\item Therefore, the underlying hardware could even be exchanged with other architectures (\emph{modularity}).
+\end{itemize}
+
+Logical block addresses (LBA) are bijectively mapped to CHS tuples (cylinder, head, sector) for hard disk drives in the canonical way:
+\begin{itemize}
+\item Most significant is the cylinder number $c \in \{0, 1, ..., C\}$, followed by the head number $h \in \{0, 1, ..., H\}$ within the cylinder, and the sector number $s \in \{0, 1, ..., S\}$ within the track is the least significant.
+\item $\text{LBA} = c \cdot H \cdot S + h \cdot S + s = (c \cdot H + h) \cdot S + s$
+\end{itemize}
+\section{(b)}
+The capacity of a hard disk drive can be increased by increasing the number of blocks by increasing the total number $C$ of cylinders, the number $H$ of heads per cylinder, or the number $S$ of sectors per track.
+Due to standardization within LBA addressing, it might be better to increase the capacity per sector (i.~e., per block).
+A flash drive is not so strictly structured inside, so the options are simply to increase the number of blocks or the amount of storage capacity per block, the former being simpler to do afterwards.
+\section{(c)}
+3 I/O requests: first one on track 1, second one on track 2 but 180 degrees away from the first one, and the third one on track 3 but adjacent to the first section.
+\begin{itemize}
+\item Advantage of using the disk native command queuing algorithm: If it is better to service the third request directly after the first request, the algorithm will make it happen.
+\item Disadvantage of using the disk native command queuing algorithm: None (as long as the execution of the algorithm does not reduce the speed significantly). One could merely consider it \emph{unfair} if the requests come from different processes or users.
+\end{itemize}
+Will the algorithm decide to service the request in order $1, 3, 2$ instead of $1, 2, 3$?
+
+Guess: Maybe it would do $1, 3, 2$ iff the time needed for the head movement from track 1 to track 3 plus the time needed for the head movement from track 3 to track 2 (\emph{seek time}) is less than the time needed for one rotation (\emph{rotational latency}).
+\end{document}
