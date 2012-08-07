@@ -42,6 +42,15 @@
 	and not as a subsitutie for backups.
 
 \subsection{Why is RAID 0 not an option for data protection and high availability?}
+	As RAID 0 makes use of \emph{Striping},
+	which spreads the data to at least two disks,
+	while not keeping any parity information.
+	It was designed with high I/O throughput
+	and high numbers of simoultaneous read and write operations in mind.
+
+	As no parity information is stored,
+	the failure of a single drive leads to the loss of all data.
+	This quite obviously contradics data protection and high availability.
 
 \subsection{Explain the process of data recovery in case of a drive failure in RAID 5}
 
