@@ -9,11 +9,11 @@
 
 %use (a) for numbering subsections
 \renewcommand*\thesubsection{(\alph{subsection})}
+\title{Aufgabenblatt 2}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
 
 \begin{document}
 
-\title{Aufgabenblatt 2}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
 \maketitle
 
 \section*{Assignment 1 - RAID}
@@ -81,9 +81,28 @@
 
 \subsection{Discuss the impact of random and sequential I/O in different RAID configurations!}
 \subsubsection*{RAID 3}
+	\emph{Sequential I/O} can be handle very well by RAID 3,
+	as it can spread the I/O with striping over all the disks.
+	\emph{Random I/O} reads can be handle very well too,
+	but it is not that good with sequential writes.
+	This is due to the write penalty,
+	which occurs in the creation of the parity information.
+	Overall the speed can be described by $(n-1)X$,
+	where n is the number of used drives and X the speed of the drives.
 
 \subsubsection*{RAID 5}
+	\emph{Sequential I/O} can be handle very well by RAID 5,
+	as it can be spread over all the disk by striping.
+	\emph{Random I/O} can be handle well to.
+	The write penalty is the same as in RAID 3,
+	but as the parity information are not stored on a dedicated disk,
+	it can also be spread.
+	The formula described in RAID 3 also holds for RAID 5.
 
 \subsubsection*{RAID 1/0}
+	RAID 1/0 delivers the best performance for \emph{Sequential I/O} and 
+	\emph{Random I/O}, as striping can be used without the write penalty
+	for the parity information.
+	The perfomance increases linear with the number of disks.
 
 \end{document}
