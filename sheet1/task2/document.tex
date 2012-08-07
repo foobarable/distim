@@ -1,0 +1,135 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+
+\usetheme{Dresden}
+\title{Assignment 2 - Types of data}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert}
+
+\begin{document}
+
+\section{Introduction}
+\subsection*{}
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Structured and unstructured data}
+	\begin{block}{Two types of data}
+	\begin{itemize}
+		\item Structured data
+		\item Unstructured data
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Structured data}
+\subsection*{}
+\begin{frame}
+	\frametitle{Definition}
+	\begin{itemize}
+		\item Structured data is identifiable because it is organized in a structure.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Properties ofstructured data}
+	\begin{itemize}
+		\item Most common form: databases (cols/rows)
+		\item Machine readable 
+		\item Searchable by data type
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Examples}
+	\begin{itemize}
+		\item mySQL, PostgreSQL, SQLite, Oracle databases
+		\item XML
+		\item Data warehouses
+	\end{itemize}
+\end{frame}
+
+
+
+\section{Unstructured data}
+\subsection*{}
+
+\begin{frame}
+	\frametitle{Definition}
+		\begin{itemize}
+			\item Unstructured data refers to any data that has no identifiable structure.
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+	\large But there is always a structure!
+	\end{center}
+\end{frame}
+
+\begin{frame}{Yes, but..}
+	\begin{itemize}
+		\item Each document itself may have a structure (e.g. HTML)
+		\item But: Structure can be not helpful for the processing task
+			\begin{description}
+				\item In HTML: Tags just for layout, not semantics
+			\end{description}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Examples}
+	\begin{description}
+		\item Word processing documents
+		\item PDF files
+		\item E-mail messages 
+		\item Blogs and Web pages
+		\item Video/Audio
+		\item ...
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Challenges}
+	Most of today's data is unstructured (~80\%)
+	\begin{block}{Challenges}
+	\begin{itemize}
+		\item Access to textual data (different file formats)
+		\item Language of the data
+		\item Volume (See Big Data presentation)
+		\item Security of the data
+		\item Searchability (the content has to  be understood)
+	\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Current approaches}
+	\begin{itemize}
+		\item Manual tagging
+		\item Dataminig/Text analytics
+		\item Document management systems (e.g. Products from SAS, Provalis Research, Inxight, SPSS)
+	\end{itemize}
+\end{frame}
+
+\section{Questions?}
+\subsection*{}
+
+\begin{frame}
+	\frametitle{Questions?}
+	\begin{center}
+		\large Questions?
+	\end{center}
+\end{frame}
+
+\end{document}
