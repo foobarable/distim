@@ -53,6 +53,24 @@
 	This quite obviously contradics data protection and high availability.
 
 \subsection{Explain the process of data recovery in case of a drive failure in RAID 5}
+	RAID 5 uses striping of data and distributes the parity information over all disks.
+	In the case of a failure of a single  data can be restored by reversing the XOR operation
+	that was used to generate the parity information.
+	As the partiy information is distributed over all drives in RAID 5,
+	some of it is lost if a disk fails.
+	This is not a problem becaus it can be generated again form the data itself.
+	The recovery works blockwise,
+	like the data is stripe accross the drives.
+	The remaining data and if availabel the parity information get XORed with each other
+	and thereby generates the missing block.
+	As described before,
+	if the parity information is missing it is can be calculated by XORing the data blocks 
+	with themselfs.
+
+	In an ideal case,
+	this data is then saved to an hot spare disk,
+	which repalacs the disk that failed.
+	%TODO this probably needs a figure
 
 \subsection{What are the benefits of using RAID 3 in a backup application?}
 	With RAID 3 one benefits from havin fast sequential write and reads like in RAID 0.
