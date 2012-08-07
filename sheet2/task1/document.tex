@@ -55,6 +55,11 @@
 \subsection{Explain the process of data recovery in case of a drive failure in RAID 5}
 
 \subsection{What are the benefits of using RAID 3 in a backup application?}
+	With RAID 3 one benefits from havin fast sequential write and reads like in RAID 0.
+	RAID 3 adds parity information to the setup of RAID 1 on a seperate disk.
+	This allows to recover from the failure of a one disk in the setup.
+	Also RAID 3 does not need huge amounts of additional diskspace,
+	as the parity information is the only data generated additionaly.
 
 \subsection{Discuss the impact of random and sequential I/O in different RAID configurations!}
 \subsubsection*{RAID 3}
