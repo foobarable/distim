@@ -6,18 +6,31 @@
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{color}
-\usepackage{listings}
 
-\lstset{
-	numbers=left,
-	basicstyle=\small,
-	tabsize=3,
-	showspaces=false,
-	showtabs=false,
-	showstringspaces=false
-}
+%use (a) for numbering subsections
+\renewcommand*\thesubsection{(\alph{subsection})}
 
 \begin{document}
-\title{Aufgabenblatt 1}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+
+\title{Aufgabenblatt 2}
+\author{Christian MÃ¼ller, Ralph Krimmel \& Sebastian Albert }
+\maketitle
+
+\section*{Assignment 1 - RAID}
+
+\subsection{Why is RAID 1 not a substitute for a backup?}
+
+\subsection{Why is RAID 0 not an option for data protection and high availability?}
+
+\subsection{Explain the process of data recovery in case of a drive failure in RAID 5}
+
+\subsection{What are the benefits of using RAID 3 in a backup application?}
+
+\subsection{Discuss the impact of random and sequential I/O in different RAID configurations!}
+\subsubsection*{RAID 3}
+
+\subsubsection*{RAID 5}
+
+\subsubsection*{RAID 1/0}
+
 \end{document}
