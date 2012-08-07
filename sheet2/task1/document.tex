@@ -19,6 +19,27 @@
 \section*{Assignment 1 - RAID}
 
 \subsection{Why is RAID 1 not a substitute for a backup?}
+	In a RAID 1 setup all the data written is mirrored to at least a second drive.
+	That means that all written should be dupilcated,
+	so in the case of a single disk failure the impact on recovery is the least among all RAID implementations.
+	Althoug there are some cases were problems can occur.
+
+	The Disk can have a seperate write cache independent of the RAID controller.
+	If a loss of power occurs and different amounts of data have been written to the disks,
+	consistency problems can occur.
+
+	A backup is usually considered to be a copy of data from a distinct point in time.
+	In contrast,
+	RAID 1 just keeps a duplicate of the current data 
+	and it is impossible to revert to an early state of the data.
+	Furthermore a backup is usually not stored in the same disk array	as the live system
+	due to be safe from failures in higher systems like the disk array or the RAID controller itself.
+	Good backup stragtegies also keep the backupped data in a different data center,
+	to be protected against severe problems like thunderstorms or fires.
+
+	All the things are not part of RAID 1,
+	so it should only be considered to enhance availabilty
+	and not as a subsitutie for backups.
 
 \subsection{Why is RAID 0 not an option for data protection and high availability?}
 
