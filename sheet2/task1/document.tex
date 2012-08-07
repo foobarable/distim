@@ -6,18 +6,103 @@
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{color}
-\usepackage{listings}
 
-\lstset{
-	numbers=left,
-	basicstyle=\small,
-	tabsize=3,
-	showspaces=false,
-	showtabs=false,
-	showstringspaces=false
-}
+%use (a) for numbering subsections
+\renewcommand*\thesubsection{(\alph{subsection})}
+\title{Aufgabenblatt 2}
+\author{Christian MÃ¼ller, Ralph Krimmel \& Sebastian Albert }
 
 \begin{document}
-\title{Aufgabenblatt 1}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+
+\maketitle
+
+\section*{Assignment 1 - RAID}
+
+\subsection{Why is RAID 1 not a substitute for a backup?}
+	In a RAID 1 setup all the data written is mirrored to at least a second drive.
+	That means that all written should be dupilcated,
+	so in the case of a single disk failure the impact on recovery is the least among all RAID implementations.
+	Althoug there are some cases were problems can occur.
+
+	The Disk can have a seperate write cache independent of the RAID controller.
+	If a loss of power occurs and different amounts of data have been written to the disks,
+	consistency problems can occur.
+
+	A backup is usually considered to be a copy of data from a distinct point in time.
+	In contrast,
+	RAID 1 just keeps a duplicate of the current data 
+	and it is impossible to revert to an early state of the data.
+	Furthermore a backup is usually not stored in the same disk array	as the live system
+	due to be safe from failures in higher systems like the disk array or the RAID controller itself.
+	Good backup stragtegies also keep the backupped data in a different data center,
+	to be protected against severe problems like thunderstorms or fires.
+
+	All the things are not part of RAID 1,
+	so it should only be considered to enhance availabilty
+	and not as a subsitutie for backups.
+
+\subsection{Why is RAID 0 not an option for data protection and high availability?}
+	As RAID 0 makes use of \emph{Striping},
+	which spreads the data to at least two disks,
+	while not keeping any parity information.
+	It was designed with high I/O throughput
+	and high numbers of simoultaneous read and write operations in mind.
+
+	As no parity information is stored,
+	the failure of a single drive leads to the loss of all data.
+	This quite obviously contradics data protection and high availability.
+
+\subsection{Explain the process of data recovery in case of a drive failure in RAID 5}
+	RAID 5 uses striping of data and distributes the parity information over all disks.
+	In the case of a failure of a single  data can be restored by reversing the XOR operation
+	that was used to generate the parity information.
+	As the partiy information is distributed over all drives in RAID 5,
+	some of it is lost if a disk fails.
+	This is not a problem becaus it can be generated again form the data itself.
+	The recovery works blockwise,
+	like the data is stripe accross the drives.
+	The remaining data and if availabel the parity information get XORed with each other
+	and thereby generates the missing block.
+	As described before,
+	if the parity information is missing it is can be calculated by XORing the data blocks 
+	with themselfs.
+
+	In an ideal case,
+	this data is then saved to an hot spare disk,
+	which repalacs the disk that failed.
+	%TODO this probably needs a figure
+
+\subsection{What are the benefits of using RAID 3 in a backup application?}
+	With RAID 3 one benefits from havin fast sequential write and reads like in RAID 0.
+	RAID 3 adds parity information to the setup of RAID 1 on a seperate disk.
+	This allows to recover from the failure of a one disk in the setup.
+	Also RAID 3 does not need huge amounts of additional diskspace,
+	as the parity information is the only data generated additionaly.
+
+\subsection{Discuss the impact of random and sequential I/O in different RAID configurations!}
+\subsubsection*{RAID 3}
+	\emph{Sequential I/O} can be handle very well by RAID 3,
+	as it can spread the I/O with striping over all the disks.
+	\emph{Random I/O} reads can be handle very well too,
+	but it is not that good with sequential writes.
+	This is due to the write penalty,
+	which occurs in the creation of the parity information.
+	Overall the speed can be described by $(n-1)X$,
+	where n is the number of used drives and X the speed of the drives.
+
+\subsubsection*{RAID 5}
+	\emph{Sequential I/O} can be handle very well by RAID 5,
+	as it can be spread over all the disk by striping.
+	\emph{Random I/O} can be handle well to.
+	The write penalty is the same as in RAID 3,
+	but as the parity information are not stored on a dedicated disk,
+	it can also be spread.
+	The formula described in RAID 3 also holds for RAID 5.
+
+\subsubsection*{RAID 1/0}
+	RAID 1/0 delivers the best performance for \emph{Sequential I/O} and 
+	\emph{Random I/O}, as striping can be used without the write penalty
+	for the parity information.
+	The perfomance increases linear with the number of disks.
+
 \end{document}
