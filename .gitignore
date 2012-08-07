@@ -1,0 +1,11 @@
+*.swp
+tmp/
+*.pdf
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.aux
+*.log
