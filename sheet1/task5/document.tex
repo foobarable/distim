@@ -56,7 +56,7 @@ The average response time R can be calculated with the following equation:
 \begin{equation}
 R = \frac{T_S}{(1-U)}
 \end{equation}
-where U is the utilization of the disk controller.
+where U is the utilization of the disk controller. Figure \ref{fig:responsetime} shows the average response time over changing utilizatipn levels. We can see that the response time increases at 70\% utilization up to levels where a proper operation is no longer possible. Therefore, a the disk should not be utilized over 70\% of its capacity.
 
 \begin{figure}
 	\begin{center}
@@ -65,5 +65,10 @@ where U is the utilization of the disk controller.
 	\label{fig:responsetime}
 	\end{center}
 \end{figure}
+
+
+
+\section*{(e)}
+Formatted partitions contain a filesystem, which itself needs additional space for meta or other data (e.g. Journals, checkpoints) to be operatable. Also some filesystems reserve space that just can be acceses as administrator in case of a full harddisk.
 
 \end{document}
