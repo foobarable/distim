@@ -27,23 +27,41 @@
 	if the digest and therby the shared secrets are identical.
 
 \subsection{List some of the data storage applications that could benefit from an IP SAN!}
-	Disaster recovery can benefit form IP SAN,
+	\emph{Disaster recovery} can benefit form IP SAN,
 	as it is easy to distribut data to other data centers via IP networks.
 
-	IP infrastructure is usually already available,
+	IP infrastructure is usually \emph{already available},
 	which makes it easy to integrate IP SAN.
 	This is especially intresting for companies that need to upgrade the storage capabilities
 	without spending money for more expensive fiber channel hardware.
 
-	For IP networks a broadrange of security protocols available,
+	For IP networks a broadrange of \emph{security protocols} (IPSec) available,
 	which makes it easier to required security and data safety policies,
 	like in medical appilications.
 
 \subsection{What are the major performance considerations for FCIP?}
+	To prevent the IP network from beeing the bottleneck,
+	it is important to ensure multiple paths between FC SAN islands.
+	This not only inrcreases the bandwith,
+	but also prevents single points of failure.
+	Furthermore Jumbo frames should be used to reduce the number of packets.
 
 \subsection{The IP bandwith provided for FCIP connectivity seems to be constrained.
 	Discuss its implications if the SANs that are merged are fairly large,
 	with 500 ports on each side, and the SANs at both ends are constantly reconfigured!}
+
+	The throughput will depend on the bandwith provided by the IP network.
+	It may help to have a large number of ports,
+	but if the routes between the SANs are not capable of transporting 
+	the required amounts of data,
+	they will not enhance transferrates.
+
+	Obviously if changes are made in both SANs
+	and these shall be committed to the other and vice versa,
+	consistency problems can occur.
+	Especially if the data is changed at both sites simoultaneously
+	and the IP network is not fast enough to ensure consisteny.
+	The number of ports might help in this case to have constant connections between the sites.
 
 \subsection{Why does the lossy nature of standard Ethernet make it unsuitable for a layered FCoE implementations?
 	How does Converged Enhanced Ehternet (CEE) address this problem?}
