@@ -22,11 +22,25 @@
 \author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
 \maketitle
 \section*{(a)}
-Which application benefits the most from bypassing the write cache? Any application for which the only or main purpose is writing large amounts of data. It does not benefit from a shorter return time from write operations and the cache is too small to hold all the written data. Example: Copying files.
+Which application benefits the most from bypassing the write cache? Any application for which the only or main purpose is writing large sequential amounts of data. It does not benefit from a shorter return time from write operations and the cache is too small to hold all the written data. Example: Copying files.
 \section*{(b)}
 Cache coherence mechanisms maintain the notion of a state for each particular cache line. The behaviour of the cache is determined by the current state.
 \begin{itemize}
 \item \emph{Modified}: has been modified in the cache and needs to be written to the underlying memory (also called \emph{dirty})
 \item \emph{Shared}: present in cache, unmodified, safe
-\item \emph{Invalid}: 
+\item \emph{Invalid}: not present in cache
+\end{itemize}
+In a multi-cache architecture, there are two types of keeping them coherent:
+\begin{itemize}
+\item \emph{Bus sniffing / snooping}: all cache controllers monitor the same bus and update internal states accordingly (broadcasts between caches)
+\item \emph{Directory based}: centralized head cache controller
+\end{itemize}
+\section*{(c)}
+Oracle database 4 K I/O example:
+\begin{itemize}
+\item \emph{Cache page size}: depends on storage pipeline, multiples of 4 K (as large as possible)
+\item \emph{Cache allocation (read vs. write)}: read-oriented
+\item \emph{Pre-fetch type}: pre-fetch subsequent entries
+\item \emph{write aside cache}: not important (mainly read operations)
+\end{itemize}
 \end{document}
