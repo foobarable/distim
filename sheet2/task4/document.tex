@@ -19,5 +19,14 @@
 
 \begin{document}
 \title{Aufgabenblatt 1}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+\author{Christian MÃ¼ller, Ralph Krimmel \& Sebastian Albert }
+\maketitle
+\section*{(a)}
+Which application benefits the most from bypassing the write cache? Any application for which the only or main purpose is writing large amounts of data. It does not benefit from a shorter return time from write operations and the cache is too small to hold all the written data. Example: Copying files.
+\section*{(b)}
+Cache coherence mechanisms maintain the notion of a state for each particular cache line. The behaviour of the cache is determined by the current state.
+\begin{itemize}
+\item \emph{Modified}: has been modified in the cache and needs to be written to the underlying memory (also called \emph{dirty})
+\item \emph{Shared}: present in cache, unmodified, safe
+\item \emph{Invalid}: 
 \end{document}
