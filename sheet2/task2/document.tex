@@ -43,10 +43,10 @@ The write penalty for RAID 1 is 2.
 
 
 \paragraph{RAID 3}
-The write penalty for RAID 3 is 4(?)
+The write penalty for RAID 3 is 1
 \begin{eqnarray*}
-	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3} * 4)  \\
-		   &=&  9600
+	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3})  \\
+		   &=&  4800
 \end{eqnarray*}
 
 \paragraph{RAID 5}
@@ -68,7 +68,7 @@ The available disks offer 130 IOPS (10k rmp).
 \paragraph{RAID 1}
 6400 IOPS are required if RAID 1 is used. This results into the need of $\frac{6400}{130} = 49.2 \approx 50$ disks
 \paragraph{RAID 3}
-9600 IOPS are required if RAID 3 is used. This results into the need of $\frac{9600}{130} = 73.8 \approx 74$ disks
+9600 IOPS are required if RAID 3 is used. This results into the need of $\frac{4800}{130} = 36.9 \approx 37$ disks
 \paragraph{RAID 5}
 9600 IOPS are required if RAID 1 is used. This results into the need of $\frac{9600}{130} = 73.8 \approx 74$ disks
 \paragraph{RAID 6}
