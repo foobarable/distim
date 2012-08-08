@@ -44,7 +44,6 @@
 	it is important to ensure multiple paths between FC SAN islands.
 	This not only inrcreases the bandwith,
 	but also prevents single points of failure.
-	Furthermore Jumbo frames should be used to reduce the number of packets.
 
 \subsection{The IP bandwith provided for FCIP connectivity seems to be constrained.
 	Discuss its implications if the SANs that are merged are fairly large,
@@ -65,5 +64,22 @@
 
 \subsection{Why does the lossy nature of standard Ethernet make it unsuitable for a layered FCoE implementations?
 	How does Converged Enhanced Ehternet (CEE) address this problem?}
+	Standard Ethernet is lossy,
+	which allows frames to be dropped or lost in transmission.
+	Usually higher level protocols like TCP take care of the correct order of transmission,
+	but they are not present in FCoE and would lead to a large overhead.
+
+	The following technologies are part of CEE to prevent packet loss in FCoE environments:\\
+	\emph{Priority-based Flow Control} (PFC) makes use of the IEEE 802.3X Ethernet PAUSE control frame.
+	This frame is send by the receiver if his buffers are full,
+	to notify the sender and make him stop sending packets
+	so that no packet is lost
+	As the PAUSE control frame blocks the communication on the entire link,
+	PFC creates eight seperate virtual links to prevent a single full buffer from blocking
+	all the communication.
+
+	\emph{Congestion Notification} allows the receivin FCoE switches to tell the sender to
+	reduce the data transfer rate.
+	These notifications are route backwars to the data stream so that the host can limit the rate.
 
 \end{document}
