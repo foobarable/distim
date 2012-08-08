@@ -19,6 +19,12 @@
 \section*{Assignment 2 - IP SAN and FCoE}
 
 \subsection{How does iSCSI handle the process of authentication?\\Research the available options!}
+	iSCSI usually handles the authentication with Challenge-Handshake Authentication Protocol (CHAP).
+	This protocol requires a shared secret.
+	The initiator sends the random value to the target 
+	and both calculate the digest of the shared secret and this random value.
+	The target sends the digest back to the initiator who completes authentication,
+	if the digest and therby the shared secrets are identical.
 
 \subsection{List some of the data storage applications that could benefit from an IP SAN!}
 
