@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{
+	numbers=left,
+	basicstyle=\small,
+	tabsize=3,
+	showspaces=false,
+	showtabs=false,
+	showstringspaces=false
+}
+
+\begin{document}
+\title{Assignment 3.3}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert}
+\maketitle
+\section*{(a)}
+A NAS gateway can make use of an existing SAN and share it with other applications.
+However, a backup-to-disk SAN is likely to be optimized for the read-write-behaviour of backups (i.~e., many large sequential writes and almost no reads) and thus not be very well-suited for file sharing purposes that a NAS is usually used for.
+\section*{(b)}
+Possible drawbacks of unsynchronized TCP window sizes:
+\begin{itemize}
+\item Too small size on sender side: Capabilities not used efficiently.
+\item Too large size on sender side: Buffer overflows, leading to dropped packets, resending necessary
+\item Overfull buffers may even decrease the performance for other users that are correctly configured.
+\end{itemize}
+\section*{(c)}
+Jumbo frame support requirements:
+\begin{itemize}
+\item all intermediate hops should support Jumbo Frames
+\item MTU size should be equal
+\item Slowdown may be caused by different MTU sized (especially by no Jumbo frame support at all by some device in between) - packets get split up and buffers congested; in case of a bad combination of different MTU sizes, speed can even decrease by up to 50\% (consider an \emph{almost} fitting MTU size)
+\end{itemize}
+\section*{(d)}
+NAS performance can be increased by finding the bottleneck within the many possibilities affecting the performance:
+\begin{itemize}
+\item Number of hops (try to reduce if bottleneck)
+\item Authentication with a directory service
+\item Retransmission (check window sizes)
+\item Overutilized routers and switches (upgrade hardware or add redundant paths)
+\item File/directory lookup and metadata requests (add NAS heads)
+\item Overutilized NAS devices (add more)
+\item Overutilized clients (their problem)
+\end{itemize}
+In general, availability can be achieved by redundancy.
+\begin{itemize}
+\item outside the NAS: keep redundant paths (switches, cables, ...)
+\item behind the NAS: redundant storage like RAID
+\item the NAS itself: keep a failover NAS head
+\end{itemize}
+\end{document}
