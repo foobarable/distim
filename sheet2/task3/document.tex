@@ -18,6 +18,34 @@
 }
 
 \begin{document}
-\title{Aufgabenblatt 1}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+\title{Assignment 2.3}
+\author{Christian MÃ¼ller, Ralph Krimmel \& Sebastian Albert}
+\maketitle
+\section*{(a)}
+\begin{itemize}
+\item 5 disks available with 931 GB in total, no buying option, 730 GB of data
+\begin{itemize}
+\item maximum 20\% redundancy possible (745 GB remaining then)
+\item RAID 1, 4, 6 disqualify
+\end{itemize}
+\item 15\% random writes, 85\% random reads
+\begin{itemize}
+\item among the remaining options RAID 3 and 5, RAID 5 performs better
+\end{itemize}
+\end{itemize}
+\section*{(b)}
+\begin{itemize}
+\item 900 GB of data, increasing by up to 30\% (270 GB), total necessity 1170 GB
+\begin{itemize}
+\item 7 disks needed non-redundantly if each has a capacity of 186 GB
+\item new disks can be bought (actually have to) as only 6 are present
+\end{itemize}
+\item 40\% writes, 60\% reads
+\begin{itemize}
+\item high write ratio induces much write penalty with parity checks
+\item recommendation therefore: RAID 1+0
+\item 7 mirror sets needed, so 14 disks needed
+\item 6 disks are present: 8 need to be bought (cost)
+\end{itemize}
+\end{itemize}
 \end{document}
