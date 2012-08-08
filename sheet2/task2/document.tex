@@ -6,18 +6,72 @@
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{color}
-\usepackage{listings}
 
-\lstset{
-	numbers=left,
-	basicstyle=\small,
-	tabsize=3,
-	showspaces=false,
-	showtabs=false,
-	showstringspaces=false
-}
+%use (a) for numbering subsections
+\renewcommand*\thesubsection{(\alph{subsection})}
+\title{Sheet 2}
+\author{Christian MÃ¼ller, Ralph Krimmel \& Sebastian Albert }
 
 \begin{document}
-\title{Aufgabenblatt 1}
-\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+
+\maketitle
+
+\section*{Assignment 2 - RAID Impact on Disk Performance} 
+\subsection{}
+
+Total workload IOPS $IOPS_{app}$ needed by the application:
+
+\begin{equation}
+	IOPS_{app} = (1000 * 2 + 2000 * 1) * 1,2 = 4800
+\end{equation}
+
+\subsubsection*{IOPS requirement \textbf{$IOPS_{req}$} for different RAID levels:}
+The IOPS requirement can be calculated with the following formula:
+\begin{equation}
+	IOPS_{req} = (IOPS_{app} * \text{Percentage read}) + (IOPS_{app} * \text{Percentage write} * \text{RAID IO Penalty})
+\end{equation}
+
+
+The read write ratio is $\frac{2}{3}$.
+
+\paragraph{RAID 1}
+The write penalty for RAID 1 is 2.
+\begin{eqnarray*}
+	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3} * 2)  \\
+		   &=&  6400
+\end{eqnarray*}
+
+
+\paragraph{RAID 3}
+The write penalty for RAID 3 is 4(?)
+\begin{eqnarray*}
+	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3} * 4)  \\
+		   &=&  9600
+\end{eqnarray*}
+
+\paragraph{RAID 5}
+The write penalty for RAID 5 is 4
+\begin{eqnarray*}
+	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3} * 4)  \\
+		   &=&  9600
+\end{eqnarray*}
+
+\paragraph{RAID 6}
+The write penalty for RAID 6 is 6
+\begin{eqnarray*}
+	IOPS_{req} &=&  (4800 * \frac{2}{3}) + (4800 * \frac{1}{3} * 6  \\
+		   &=&  12800
+\end{eqnarray*}
+\subsection{}
+\subsubsection*{Required discs}
+The available disks offer 130 IOPS (10k rmp).
+\paragraph{RAID 1}
+6400 IOPS are required if RAID 1 is used. This results into the need of $\frac{6400}{130} = 49.2 \approx 50$ disks
+\paragraph{RAID 3}
+9600 IOPS are required if RAID 3 is used. This results into the need of $\frac{9600}{130} = 73.8 \approx 74$ disks
+\paragraph{RAID 5}
+9600 IOPS are required if RAID 1 is used. This results into the need of $\frac{9600}{130} = 73.8 \approx 74$ disks
+\paragraph{RAID 6}
+12800 IOPS are required if RAID 1 is used. This results into the need of $\frac{12800}{130} = 98.5 \approx 99$ disks
+
 \end{document}
