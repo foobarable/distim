@@ -41,5 +41,30 @@
 	especially if a VTL substitutes physical tapes.
 
 \subsection{Describe the data deduplication methods and distinguish source-based and target-base data deduplication!}
+	Deduplication can be done on two levels , File-level and subfile-leve,
+	and it can be performed at the source or at the target.
+
+	\emph{File-level} deduplication (also: \textsl{single-instance storage}) 
+	checks if the file already exits on the storage diveces.
+	This is usually done by a cryptography hash-function.
+	Subsequent copies of the file are replaced with a pointer to the original file.
+
+	\emph{Subfile level} deduplication,
+	takes smaller chunks of the file
+	and uses special algorithms to find redundant chunks accross and within the file.
+	The chunks can either have a fixed or a variable length.
+	This method of deduplication can reduce the amount of stored data,
+	as similar files with only slight changes can be stored more effictiantly,
+	then with file-level deduplication.
+
+	\emph{Source-based} deduplication eliminates redundant data at the backup-client.
+	This method reduces the data send over the network to the backup-device.
+	It also provides a shorter bachup window,
+	but enhances the load on the backup-client.
+
+	\emph{Target-based} deduplication sends all the data to the bachup-device.
+	All calculations take place there.
+	This method requires a larger amount of data to be transfered from
+	the backup-client to the backup-device.
 
 \end{document}
