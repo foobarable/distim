@@ -24,6 +24,24 @@
 
 \subsection{List and explain the considerations in tape as backup technology!
 				What are the challenges in this environment?}
+	Tape are a low-cost solution for backups.
+	The low price is the main consideration for choosing tape as a backup solution.
+	Tapes have been the cheapest waz to store data for a long time
+	and therefore a lot of data has been stored in tape libaries already.
+	Adding additiononal tape capacity to a storage solution is usually easier 
+	then switching the storage technology to disks.
+	
+	A major challenge with tapes is that they degrade when they are used.
+	Magnetic tapes suffer from tear and wear when beeing used.
+	When data does not stream apropriately,
+	the drive has to repeat back and forth over the tape
+	which causes additional degradation of the tape.
+	This is known as the shoe-shining-effect.
+	Tape libaries have a long response time,
+	as a magnetic arm has to grab the tape an insert it into a drive,
+	then the tape has to be forwarded to the desired reading position,
+	before the first bits of data can be read.
+	This long \textsl{load to ready time} is also a challenge when using tapes as backup media.
 
 \subsection{Describe the benefits of using ``virtual tape libaries'' over ``physical tapes''!}
 	Virtual tape libaries (VTL) have some key advantages over pyhsical tapes.
