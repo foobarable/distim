@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+
+%use (a) for numbering subsections
+\renewcommand*\thesubsection{(\alph{subsection})}
+\renewcommand*\thesubsubsection{(\roman{subsubsection})}
+\title{Aufgabenblatt 4}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+
+\begin{document}
+
+\maketitle
+
+\section*{Assignment 2 - Introduction to Business Continuity}
+
+\subsection{}
+\begin{eqnarray*} 
+	MTBF &=& \frac{\text{Total uptime}}{\text{Number of failures}}  \\
+	\text{Total uptime} &=& 1000 - (1000*0.02) \\
+	\text{Number of failures} &=& 1 \\
+	MTBF &=& 980 \\ 
+\end{eqnarray*}
+
+\subsection{}
+\begin{eqnarray*}
+	IA &=& MTBF/(MTBF-MTTR)\\
+	MTFB &=& 35h-0.75h-0.25h \\
+	&=& 34h \\
+	MTTR &=& 1h \\
+	IA &=& 34h/34h+1h \\
+	&=& 0.971  \\
+\end{eqnarray*}
+
+\subsection{}
+
+
+\subsection{}
+
+
+\subsection{}
+
+
+
+\end{document}
