@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{color}
+
+%use (a) for numbering subsections
+\renewcommand*\thesubsection{(\alph{subsection})}
+\title{Aufgabenblatt 4}
+\author{Christian Müller, Ralph Krimmel \& Sebastian Albert }
+
+\begin{document}
+
+\maketitle
+
+\section*{Assignment 3 - Backup and Archive}
+
+\subsection{Propose a backup and recovery solution for the described company!}
+	A more centralized approach might be a better solution for the company,
+	with a dedicated backup server.
+	A mixed backup topology should be implemented as it also reduces administrative overhead
+	and reduces the recovery times with fast FC access to the backups.
+	The backend should be changed to a virtual tape libary,
+	as it offers faster acces times in the case data needs to be recovered.
+	To ensure availabilty of e-mail and database services
+	the backups should be performed as online backups.
+
+\subsection{Discuss the security conerns in backup environments?}
+		The backuped data should be as protected as the live data.
+		This means that data should never be send unencrypted over any wire,
+		especially when performing a backup
+		as a complete ``working copy'' is sent.
+		The backuped data should also be stored in a safe way.
+		Security can be enhanced by encrypting the data.
+		If the data shall be archived for a long time,
+		one must keep in mind that encryptions might weaken over time.
+
+		It is also important to restrict physical access to the backup devices,
+		as sensitive data could be stolen including the backup media.
+
+\subsection{List and explain the considerations in tape as backup technology!
+				What are the challenges in this environment?}
+	Tape are a low-cost solution for backups.
+	The low price is the main consideration for choosing tape as a backup solution.
+	Tapes have been the cheapest waz to store data for a long time
+	and therefore a lot of data has been stored in tape libaries already.
+	Adding additiononal tape capacity to a storage solution is usually easier 
+	then switching the storage technology to disks.
+	
+	A major challenge with tapes is that they degrade when they are used.
+	Magnetic tapes suffer from tear and wear when beeing used.
+	When data does not stream apropriately,
+	the drive has to repeat back and forth over the tape
+	which causes additional degradation of the tape.
+	This is known as the shoe-shining-effect.
+	Tape libaries have a long response time,
+	as a magnetic arm has to grab the tape an insert it into a drive,
+	then the tape has to be forwarded to the desired reading position,
+	before the first bits of data can be read.
+	This long \textsl{load to ready time} is also a challenge when using tapes as backup media.
+
+\subsection{Describe the benefits of using ``virtual tape libaries'' over ``physical tapes''!}
+	Virtual tape libaries (VTL) have some key advantages over pyhsical tapes.
+	These boil down to the fact,
+	that disks are used in stead of tapes
+	and thereby eliminating the problems related to using tapes.
+	Tapes suffer from tear and wear and the so called shoe-shine-effect,
+	which reduces their reliabilty.
+	These both features allow faster backup and recovery
+	then pyhsical tapes.
+	Additionally VTLs offer support for data replication over IP networks,
+	so that inexpensive offsite replication is available.
+	As VTLs come preconfigured,
+	they are easier to integrate than backup-to-disk services,
+	especially if a VTL substitutes physical tapes.
+
+\subsection{Describe the data deduplication methods and distinguish source-based and target-base data deduplication!}
+	Deduplication can be done on two levels , File-level and subfile-leve,
+	and it can be performed at the source or at the target.
+
+	\emph{File-level} deduplication (also: \textsl{single-instance storage}) 
+	checks if the file already exits on the storage diveces.
+	This is usually done by a cryptography hash-function.
+	Subsequent copies of the file are replaced with a pointer to the original file.
+
+	\emph{Subfile level} deduplication,
+	takes smaller chunks of the file
+	and uses special algorithms to find redundant chunks accross and within the file.
+	The chunks can either have a fixed or a variable length.
+	This method of deduplication can reduce the amount of stored data,
+	as similar files with only slight changes can be stored more effictiantly,
+	then with file-level deduplication.
+
+	\emph{Source-based} deduplication eliminates redundant data at the backup-client.
+	This method reduces the data send over the network to the backup-device.
+	It also provides a shorter bachup window,
+	but enhances the load on the backup-client.
+
+	\emph{Target-based} deduplication sends all the data to the bachup-device.
+	All calculations take place there.
+	This method requires a larger amount of data to be transfered from
+	the backup-client to the backup-device.
+
+\end{document}
