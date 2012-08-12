@@ -38,13 +38,84 @@
 \end{eqnarray*}
 
 \subsection{}
+A cluster minimizes the RTO because in the cluster the application  and  the data is available on all servers all the time. . In case of a disaster or an outage event this allows to have a really fast failover. There is no need to copy any data to a new location. Due to monitoring and coordination of a cluster, a failover node can nearly instanly take over the application. 
+%Implementations: DRBD + heartbeat, AVS (Sun/Oracle)
+
+\subsection{}
+Hot site: Has lower RTO, maybe also RPO because it could be synchronized 
+Cold site: Higher RTO, site hast to start running, data copied.. 
 
 
 \subsection{}
+\subsubsection{Analysis}
+	Consists of three phases:
+
+	\paragraph{Business Impact Analysis}
+	\begin{itemize}
+	\item Differentiate between critical (= damage is unacceptable) and non-critical organization functions
+	\item Critical values are assigned: \textbf{R}ecovery \textbf{P}oint \textbf{O}bjective (the acceptable latency of data that will not be recovered, acceptable amount of data that can be lost is not exceeded) and \textbf{R}ecovery \textbf{T}ime \textbf{O}bjective (the acceptable amount of time to restore the function)
+	$\Rightarrow$ Recovery requirements 
+	\end{itemize}
+
+	\paragraph{Threat and Risk Analysis}
+	\begin{itemize}
+	
+		\item Potential risks and threats should be documented
+		\item Examples: 
+			\begin{itemize}
+				\item Earthquake, 
+				\item Fire, 
+				\item Sabotage, 
+				\item Cyber attack
+				\item ...
+			\end{itemize}
+		\end{itemize}
+
+	\paragraph{Recovery Requirement Documentation}
+	Documenet what is needed for recovery
+	Examples: 
+	\begin{itemize}
+		\item Numbers and types of desks, 
+		\item Employees, 
+		\item The applications and application data
+		...
+	\end{itemize}
+
+	\subsubsection{Solution design}
+	Identify most effective disaster recovery solution
+	\begin{itemize}
+		\item minimum application data requirements
+		\item minimum time frame in which application data must be available (RTO)
+	\end{itemize}
+
+	\subsubsection{Implementation}
+		$\Rightarrow$  Execution of the design elements identified in the solution design phase
+
+		\subsubsection{Testing and organizational acceptance}
+		
+		\begin{itemize}
+			\item Usually Biannual or annual schedule → 
+			\item Minimizes flaws in recovery requirement, solution design or solution implementation
+			\item Includes:
+				\begin{itemize}
+					\item Crisis command team call-out testing
+					\item Application test 
+					\item Business process test 
+				\end{itemize}
+		\end{itemize}
 
 
-\subsection{}
-
-
+		\subsubsection{Maintenance}
+		Three periodic activities
+		\begin{itemize}
+			\item Information update and testing
+				\begin{itemize}
+					\item Staffing changes
+					\item Departmental changes
+					\item ...
+				\end{itemize}
+			\item Testing and verification of technical solutions
+			\item Testing and verification of organization recovery procedures: Changes in systems?, documented work checklists still accurate? 
+		\end{itemize}
 
 \end{document}
