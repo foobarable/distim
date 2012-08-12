@@ -21,6 +21,17 @@
 \subsection{Propose a backup and recovery solution for the described company!}
 
 \subsection{Discuss the security conerns in backup environments?}
+		The backuped data should be as protected as the live data.
+		This means that data should never be send unencrypted over any wire,
+		especially when performing a backup
+		as a complete ``working copy'' is sent.
+		The backuped data should also be stored in a safe way.
+		Security can be enhanced by encrypting the data.
+		If the data shall be archived for a long time,
+		one must keep in mind that encryptions might weaken over time.
+
+		It is also important to restrict physical access to the backup devices,
+		as sensitive data could be stolen including the backup media.
 
 \subsection{List and explain the considerations in tape as backup technology!
 				What are the challenges in this environment?}
