@@ -19,6 +19,14 @@
 \section*{Assignment 3 - Backup and Archive}
 
 \subsection{Propose a backup and recovery solution for the described company!}
+	A more centralized approach might be a better solution for the company,
+	with a dedicated backup server.
+	A mixed backup topology should be implemented as it also reduces administrative overhead
+	and reduces the recovery times with fast FC access to the backups.
+	The backend should be changed to a virtual tape libary,
+	as it offers faster acces times in the case data needs to be recovered.
+	To ensure availabilty of e-mail and database services
+	the backups should be performed as online backups.
 
 \subsection{Discuss the security conerns in backup environments?}
 		The backuped data should be as protected as the live data.
